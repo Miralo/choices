@@ -1,0 +1,18 @@
+{
+  "name": "choices",
+  "version": "1.0.0",
+  "description": "small and compact CRM package, thinked to handle and manage the choices made on projects",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "crm",
+    "project",
+    "management",
+    "tasks",
+    "management"
+  ],
+  "author": "miralo.web@gmail.com",
+  "license": "ISC"
+}
