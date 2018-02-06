@@ -1,0 +1,37 @@
+<!-- views/layouts/main.handlebars -->
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="User Authentication">
+		<meta name="author" content="">
+
+		<title>{{ title }}</title>
+
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.css">
+	</head>
+
+	<body>
+		<div class="ui raised very padded text container segment">
+			<h2 class="ui header">{{ title }}</h2>
+			{% block contents %}{% endblock %}
+		</div>
+		
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
+
+		{% block bottom_scripts %}			
+			<script src="/dist/dashboard.entry.js"></script>
+		{% endblock %}
+	</body>
+</html>
