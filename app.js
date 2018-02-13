@@ -39,40 +39,6 @@ app.use(session({secret: 'supercat', saveUninitialized: true, resave: true}));
 /** END OF GENERIC MIDDLEWARE SETUP */
 /** =============================== */
 
-/** AUTH0 SETUP */
-/** ------------------------------- */
-
-// This will configure Passport to use Auth0
-
-/*var strategy = new Auth0Strategy({
-	domain:       process.env.AUTH0_DOMAIN,
-	clientID:     process.env.AUTH0_CLIENT_ID,
-	clientSecret: process.env.AUTH0_CLIENT_SECRET,
-	callbackURL:  process.env.AUTH0_LOGIN_CALLBACK
-}, function(accessToken, refreshToken, extraParams, user, done) {
-	// profile has all the information from the user
-	return done(null, user._json);
-});*/
-
-// Here we are adding the Auth0 Strategy to our passport framework
-//passport.use(strategy);
-
-// The searlize and deserialize user methods will allow us to get the user data once they are logged in.
-/*passport.serializeUser(function(user, done) {
-  done(null, user);
-});*/
-
-/*passport.deserializeUser(function(user, done) {
-  done(null, user);
-});*/
-
-// We are also adding passport to our middleware flow
-//app.use(passport.initialize());
-//app.use(passport.session());
-
-/** END OF AUTH0 SETUP */
-/** =============================== */
-
 /** KNEX SETUP */
 /** ------------------------------- */
 //var config = require('./knexfile.js');
@@ -89,15 +55,8 @@ app.use(session({secret: 'supercat', saveUninitialized: true, resave: true}));
 // index
 app.use('/', require('./routes/index'));
 
-/*decommentare in production
-app.use(function(req, res, next) {
-	if (!req.user)
-		return res.redirect('/');
-
-	next();
-});*/
-
 //GENERIC ROUTES
+app.use('/register', require('./routes/register'));
 
 
 /** END OF ROUTES SETUP */
