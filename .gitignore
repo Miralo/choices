@@ -1,3 +1,6 @@
+# Local Directory
+public/dist
+
 # Logs
 logs
 *.log
