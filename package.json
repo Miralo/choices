@@ -12,6 +12,7 @@
   "author": "miralo.web@gmail.com",
   "license": "ISC",
   "dependencies": {
+    "amazon-cognito-auth-js": "^1.1.1",
     "amazon-cognito-identity-js": "^1.31.0",
     "aws-sdk": "^2.190.0",
     "body-parser": "^1.18.2",
