@@ -3,7 +3,8 @@ var webpack = require('webpack')
 
 module.exports = {
 	entry: {
-		register: './public/src/register.js'
+		register: './public/src/register.js',
+		login: './public/src/login.js'
 	},
 	output: {
 		path: path.resolve(__dirname, './public/dist'),
