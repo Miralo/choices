@@ -1,21 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser, AuthenticationDetails, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
-const REGION = //Your Region Here
-const USER_POOL_ID = //Your USER POOL ID Here
-const CLIENT_ID = //Your CLIENT ID Here
-AWS.config.update({
-	region: REGION
-})
+import {
+	REGION,
+	USER_POOL_ID,
+	CLIENT_ID,
+	poolData
+} from '../utils/aws_consts'
 
-const poolData = {
-	UserPoolId : USER_POOL_ID,
-	ClientId : CLIENT_ID
-}
 const userPool = new CognitoUserPool(poolData);
-
 
 class RegisterForm extends React.Component {
 	constructor() {
