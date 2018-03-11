@@ -4,7 +4,8 @@ var webpack = require('webpack')
 module.exports = {
 	entry: {
 		register: './public/src/register.js',
-		login: './public/src/login.js'
+		login: './public/src/login.js',
+		index: './public/src/index.js'
 	},
 	output: {
 		path: path.resolve(__dirname, './public/dist'),

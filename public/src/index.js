@@ -10,25 +10,31 @@ import {
 } from '../utils/aws_consts'
 
 const userPool = new CognitoUserPool(poolData);
+let currentUser = userPool.getCurrentUser();
+
+if (currentUser != null) {
+	currentUser.getSession(function(err, session) {
+		if (err) {
+			alert(err);
+			return;
+		}
+		if (session.isValid()) {
+			window.location.href = "/dashboard";
+		}
+	});
+}
 
 class IndexPage extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			 
-		}
-	}
-
 	render() {
 		return (
 			<p>
 				Domestic dogs inherited complex behaviors, such as bite inhibition, from their wolf ancestors, which would have been pack hunters with complex body language.
 				<br/><br/>
 				Detto questo, vuoi loggarti o registrarti?<br/><br/>
-				<a href="/login" class="ui inverted green button">
+				<a href="/login" className="ui inverted green button">
 					Login
 				</a>
-				<a href="/register" class="ui inverted blue button">
+				<a href="/register" className="ui inverted blue button">
 					Registrati
 				</a>
 			</p>
