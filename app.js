@@ -58,6 +58,7 @@ app.use('/', require('./routes/index'));
 //GENERIC ROUTES
 app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
+app.use('/dashboard', require('./routes/dashboard'));
 
 
 /** END OF ROUTES SETUP */
