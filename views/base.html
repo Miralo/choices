@@ -16,11 +16,23 @@
 	</head>
 
 	<body>
+		{% block header %}
+			<div class="ui inverted segment">
+				<div class="ui inverted secondary menu">
+					<a class="active item" href="/">
+						Home
+					</a>
+					<a class="item" href="/projects">
+						Messages
+					</a>
+				</div>
+			</div>
+		{% endblock %}
+
 		<div class="ui raised very padded text container segment">
 			<h2 class="ui header">{{ title }}</h2>
 			{% block contents %}{% endblock %}
-		</div>
-		
+		</div>		
 
 		<!-- Bootstrap core JavaScript
 		================================================== -->
@@ -29,7 +41,6 @@
 
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
 		{% block bottom_scripts %}
 			<script src="https://sdk.amazonaws.com/js/aws-sdk-2.190.0.min.js"></script>
