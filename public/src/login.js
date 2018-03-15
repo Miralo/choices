@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Toastr from 'toastr';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser, AuthenticationDetails, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
 import {
@@ -49,9 +50,8 @@ class LoginForm extends React.Component {
 
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: function (result) {
-				console.log(result);
-				console.log('access token + ' + result.getAccessToken().getJwtToken());
-				//toastr.success('Complimenti ' + result.getUsername() + ', ti sei registrato correttamente!');
+				window.location.href = "/dashboard";
+				Toastr.success('Complimenti ' + result.getUsername() + ', ti sei registrato correttamente!');
 			},
 	
 			onFailure: function(err) {
