@@ -38,8 +38,83 @@ class Projects extends React.Component {
 						<div className="sub header">Consulta i tuoi progetti o creane uno nuovo</div>
 					</div>
 				</h2>
-				<div class="ui divider"></div>
+				<div className="ui divider"></div>
 				<button className="ui teal button">Aggiungi nuovo progetto</button>
+
+				<div className="ui special cards" style={{marginTop: '30px'}}>
+					<div className="card">
+						<div className="blurring dimmable image">
+							<div className="ui dimmer">
+								<div className="content">
+									<div className="center">
+										<div className="ui inverted button">Add Friend</div>
+									</div>
+								</div>
+							</div>
+							<img src="https://placeimg.com/290/290/animals" />
+						</div>
+						<div className="content">
+							<a className="header">Team Fu</a>
+							<div className="meta">
+								<span className="date">Created in Sep 2014</span>
+							</div>
+						</div>
+						<div className="extra content">
+							<a>
+								<i className="users icon"></i>
+								2 Members
+							</a>
+						</div>
+					</div>
+					<div className="card">
+						<div className="blurring dimmable image">
+							<div className="ui dimmer">
+								<div className="content">
+									<div className="center">
+										<div className="ui inverted button">Add Friend</div>
+									</div>
+								</div>
+							</div>
+							<img src="https://placeimg.com/290/290/animals" />
+						</div>
+						<div className="content">
+							<a className="header">Team Fu</a>
+							<div className="meta">
+								<span className="date">Created in Sep 2014</span>
+							</div>
+						</div>
+						<div className="extra content">
+							<a>
+								<i className="users icon"></i>
+								2 Members
+							</a>
+						</div>
+					</div>
+					<div className="card">
+						<div className="blurring dimmable image">
+							<div className="ui dimmer">
+								<div className="content">
+									<div className="center">
+										<div className="ui inverted button">Add Friend</div>
+									</div>
+								</div>
+							</div>
+							<img src="https://placeimg.com/290/290/animals" />
+						</div>
+						<div className="content">
+							<a className="header">Team Fu</a>
+							<div className="meta">
+								<span className="date">Created in Sep 2014</span>
+							</div>
+						</div>
+						<div className="extra content">
+							<a>
+								<i className="users icon"></i>
+								2 Members
+							</a>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 
