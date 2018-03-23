@@ -17,20 +17,22 @@
 
 	<body>
 		{% block header %}
-			<div class="ui inverted segment">
+			<div class="ui inverted segment" style="border-radius: 0px">
 				<div class="ui inverted secondary menu">
 					<a class="active item" href="/">
 						Home
 					</a>
 					<a class="item" href="/projects">
-						Messages
+						Projects
+					</a>
+					<a class="item" href="/contacts">
+						Contacts
 					</a>
 				</div>
 			</div>
 		{% endblock %}
 
-		<div class="ui raised very padded text container segment">
-			<h2 class="ui header">{{ title }}</h2>
+		<div class="ui container">
 			{% block contents %}{% endblock %}
 		</div>		
 

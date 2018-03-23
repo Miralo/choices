@@ -60,27 +60,29 @@ class RegisterForm extends React.Component {
 
 	render() {
 		return (
-			<form className="ui form">
-				<div className="field">
-					<label>Nome e Cognome</label>
-					<input type="text" name="name" placeholder="es: Jon Snow" value={this.state.name} onChange={this.handleChange} />
-				</div>
-				<div className="field">
-					<label>Email</label>
-					<input type="text" name="email" placeholder="es: jon.snow@nightwatch.barrier"  value={this.state.email} onChange={this.handleChange} />
-				</div>
-				<div className="field">
-					<label>Password</label>
-					<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-				</div>
-				<div className="field">
-					<div className="ui checkbox">
-						<input type="checkbox" tabIndex="0" className="hidden" />
-						<label>I agree to the Terms and Conditions</label>
+			<div className="ui raised very padded text container segment">
+				<form className="ui form">
+					<div className="field">
+						<label>Nome e Cognome</label>
+						<input type="text" name="name" placeholder="es: Jon Snow" value={this.state.name} onChange={this.handleChange} />
 					</div>
-				</div>
-				<button className="ui green button" type="button" onClick={this.RegisterUser}>Registrati</button>
-			</form>
+					<div className="field">
+						<label>Email</label>
+						<input type="text" name="email" placeholder="es: jon.snow@nightwatch.barrier"  value={this.state.email} onChange={this.handleChange} />
+					</div>
+					<div className="field">
+						<label>Password</label>
+						<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+					</div>
+					<div className="field">
+						<div className="ui checkbox">
+							<input type="checkbox" tabIndex="0" className="hidden" />
+							<label>I agree to the Terms and Conditions</label>
+						</div>
+					</div>
+					<button className="ui green button" type="button" onClick={this.RegisterUser}>Registrati</button>
+				</form>
+			</div>
 		);
 	}
 }

@@ -30,8 +30,8 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<h2 className="ui icon header">
-				<i className="chart bar outline icon"></i>
+			<h2 className="ui icon header center aligned">
+				<i className="small chart bar outline icon"></i>
 				<div className="content">
 					Dashboard
 					<div className="sub header">Sei nel quartiere sbagliato, yo!</div>

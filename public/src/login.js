@@ -63,17 +63,19 @@ class LoginForm extends React.Component {
 
 	render() {
 		return (
-			<form className="ui form">
-				<div className="field">
-					<label>Email</label>
-					<input type="text" name="email" placeholder="es: jon.snow@nightwatch.barrier"  value={this.state.email} onChange={this.handleChange} />
-				</div>
-				<div className="field">
-					<label>Password</label>
-					<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-				</div>
-				<button className="ui green button" type="button" onClick={this.AuthUser}>Accedi</button>
-			</form>
+			<div className="ui raised very padded text container segment">
+				<form className="ui form">
+					<div className="field">
+						<label>Email</label>
+						<input type="text" name="email" placeholder="es: jon.snow@nightwatch.barrier"  value={this.state.email} onChange={this.handleChange} />
+					</div>
+					<div className="field">
+						<label>Password</label>
+						<input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+					</div>
+					<button className="ui green button" type="button" onClick={this.AuthUser}>Accedi</button>
+				</form>
+			</div>
 		);
 	}
 }
