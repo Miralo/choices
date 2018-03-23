@@ -60,6 +60,10 @@ app.use('/register', require('./routes/register'));
 app.use('/login', require('./routes/login'));
 app.use('/dashboard', require('./routes/dashboard'));
 
+//PROJECTS ROUTES
+var projects = require('./routes/projects');
+app.use('/projects', projects);
+
 
 /** END OF ROUTES SETUP */
 /** =============================== */
