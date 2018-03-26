@@ -42,75 +42,56 @@ class Projects extends React.Component {
 				<button className="ui teal button">Aggiungi nuovo progetto</button>
 
 				<div className="ui special cards" style={{marginTop: '30px'}}>
-					<div className="card">
-						<div className="blurring dimmable image">
-							<div className="ui dimmer">
-								<div className="content">
-									<div className="center">
-										<div className="ui inverted button">Add Friend</div>
-									</div>
-								</div>
-							</div>
-							<img src="https://placeimg.com/290/290/animals" />
-						</div>
+					<div className="ui card">
 						<div className="content">
-							<a className="header">Team Fu</a>
+							<a className="header">Kristy</a>
 							<div className="meta">
-								<span className="date">Created in Sep 2014</span>
+								<span className="date">Joined in 2013</span>
+							</div>
+							<div className="description">
+								Kristy is an art director living in New York.
 							</div>
 						</div>
 						<div className="extra content">
 							<a>
-								<i className="users icon"></i>
-								2 Members
+								<i className="user icon"></i>
+								22 Friends
 							</a>
 						</div>
 					</div>
-					<div className="card">
-						<div className="blurring dimmable image">
-							<div className="ui dimmer">
-								<div className="content">
-									<div className="center">
-										<div className="ui inverted button">Add Friend</div>
-									</div>
-								</div>
-							</div>
-							<img src="https://placeimg.com/290/290/animals" />
-						</div>
+					
+					<div className="ui card">
 						<div className="content">
-							<a className="header">Team Fu</a>
+							<a className="header">Kristy</a>
 							<div className="meta">
-								<span className="date">Created in Sep 2014</span>
+								<span className="date">Joined in 2013</span>
+							</div>
+							<div className="description">
+								Kristy is an art director living in New York.
 							</div>
 						</div>
 						<div className="extra content">
 							<a>
-								<i className="users icon"></i>
-								2 Members
+								<i className="user icon"></i>
+								22 Friends
 							</a>
 						</div>
 					</div>
-					<div className="card">
-						<div className="blurring dimmable image">
-							<div className="ui dimmer">
-								<div className="content">
-									<div className="center">
-										<div className="ui inverted button">Add Friend</div>
-									</div>
-								</div>
-							</div>
-							<img src="https://placeimg.com/290/290/animals" />
-						</div>
+
+					<div className="ui card">
 						<div className="content">
-							<a className="header">Team Fu</a>
+							<a className="header">Kristy</a>
 							<div className="meta">
-								<span className="date">Created in Sep 2014</span>
+								<span className="date">Joined in 2013</span>
+							</div>
+							<div className="description">
+								Kristy is an art director living in New York.
 							</div>
 						</div>
 						<div className="extra content">
 							<a>
-								<i className="users icon"></i>
-								2 Members
+								<i className="user icon"></i>
+								22 Friends
 							</a>
 						</div>
 					</div>
