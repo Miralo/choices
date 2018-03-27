@@ -41,10 +41,10 @@ app.use(session({secret: 'supercat', saveUninitialized: true, resave: true}));
 
 /** KNEX SETUP */
 /** ------------------------------- */
-//var config = require('./knexfile.js');
-//var knex = require('knex')(config['development']);
+var config = require('./knexfile.js');
+var knex = require('knex')(config['development']);
 
-//knex.migrate.latest([config]);
+knex.migrate.latest([config]);
 
 /** END OF KNEX SETUP */
 /** =============================== */
