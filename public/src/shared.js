@@ -11,32 +11,18 @@ import {
 } from '../utils/aws_consts'
 
 class Shared extends React.Component {
-	constructor() {
-		super();
-		this.state = {}
-	}
-
-	handleChange(event) {
-		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const name = target.name;
-
-		this.setState({
-			[name]: value
-		});
-	}
-
 	render() {
+		var user = this.props.user;
 		return (
 			<div>
-				<Segment inverted>
+				<Segment inverted style={{ borderRadius: '0px', marginBottom: '40px', padding: '5px 15px' }}>
 					<Menu inverted pointing secondary>
 						<Menu.Item name='home' href="/">Home</Menu.Item>
 						<Menu.Item name='projects' href="/projects">Projects</Menu.Item>
 						<Menu.Item name='contacts' href="/contacts">Contacts</Menu.Item>
 
 						<Menu.Menu position='right'>
-							<Dropdown item text='Utente'>
+							<Dropdown item text={user.signInUserSession.idToken.payload.email}>
 								<Dropdown.Menu>
 									<Dropdown.Item>Logout</Dropdown.Item>
 								</Dropdown.Menu>
@@ -54,14 +40,13 @@ const userPool = new CognitoUserPool(poolData);
 let currentUser = userPool.getCurrentUser();
 
 if (currentUser != null) {
-	console.log(currentUser);
 	currentUser.getSession(function(err, session) {
 		if (err) {
 			window.location.href = "/login";
 		}
 		if (session.isValid()) {
 			ReactDOM.render(
-				<Shared />,
+				<Shared user={currentUser} />,
 				document.getElementById('header-app')
 			);
 		}
