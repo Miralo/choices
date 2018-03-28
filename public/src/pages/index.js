@@ -27,7 +27,7 @@ if (currentUser != null) {
 class IndexPage extends React.Component {
 	render() {
 		return (
-			<p>
+			<div className="ui raised very padded text container segment">
 				Domestic dogs inherited complex behaviors, such as bite inhibition, from their wolf ancestors, which would have been pack hunters with complex body language.
 				<br/><br/>
 				Detto questo, vuoi loggarti o registrarti?<br/><br/>
@@ -37,7 +37,7 @@ class IndexPage extends React.Component {
 				<a href="/register" className="ui inverted blue button">
 					Registrati
 				</a>
-			</p>
+			</div>
 		);
 	}
 }

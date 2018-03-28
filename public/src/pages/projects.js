@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Toastr from 'toastr';
-import { Button, Modal } from 'semantic-ui-react'
+import { Button, Modal, Form, TextArea } from 'semantic-ui-react'
 import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
 import {
@@ -14,7 +14,10 @@ import {
 class Projects extends React.Component {
 	constructor() {
 		super();
-		this.state = {}
+		this.state = {
+			title: '',
+			description: '',
+		}
 
 		this.handleChange = this.handleChange.bind(this);
 	}
@@ -40,12 +43,20 @@ class Projects extends React.Component {
 					</div>
 				</h2>
 				<div className="ui divider"></div>
-				<Modal trigger={<Button color="teal">Aggiungi nuovo progetto</Button>}>
+				<Modal trigger={<Button color="teal">Aggiungi nuovo progetto</Button>} closeIcon>
 					<Modal.Header>Select a Photo</Modal.Header>
 					<Modal.Content image>
 						<Modal.Description>
-							<p>We've found the following gravatar image associated with your e-mail address.</p>
-							<p>Is it okay to use this photo?</p>
+						<Form>
+							<Form.Field>
+								<label>Nome del Progetto</label>
+								<input name="title" placeholder='Es: Morte Nera' value={this.state.title} onChange={this.handleChange} />
+							</Form.Field>
+							<Form.Field>
+								<TextArea name="description" placeholder='Descrizione' value={this.state.description} onChange={this.handleChange} />
+							</Form.Field>
+							<Button color="green" type='submit'>Crea Progetto</Button>
+						</Form>
 						</Modal.Description>
 					</Modal.Content>
 				</Modal>
