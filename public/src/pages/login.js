@@ -8,7 +8,7 @@ import {
 	USER_POOL_ID,
 	CLIENT_ID,
 	poolData
-} from '../utils/aws_consts'
+} from '../../utils/aws_consts'
 
 const userPool = new CognitoUserPool(poolData);
 

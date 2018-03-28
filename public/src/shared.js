@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Toastr from 'toastr';
+import { Button, Modal, Segment, Menu, Dropdown } from 'semantic-ui-react'
 import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
 import {
@@ -10,12 +10,10 @@ import {
 	poolData
 } from '../utils/aws_consts'
 
-class Dashboard extends React.Component {
+class Shared extends React.Component {
 	constructor() {
 		super();
 		this.state = {}
-
-		//this.handleChange = this.handleChange.bind(this);
 	}
 
 	handleChange(event) {
@@ -30,29 +28,41 @@ class Dashboard extends React.Component {
 
 	render() {
 		return (
-			<h2 className="ui icon header center aligned">
-				<i className="small chart bar outline icon"></i>
-				<div className="content">
-					Dashboard
-					<div className="sub header">Sei nel quartiere sbagliato, yo!</div>
-				</div>
-			</h2>
+			<div>
+				<Segment inverted>
+					<Menu inverted pointing secondary>
+						<Menu.Item name='home' href="/">Home</Menu.Item>
+						<Menu.Item name='projects' href="/projects">Projects</Menu.Item>
+						<Menu.Item name='contacts' href="/contacts">Contacts</Menu.Item>
+
+						<Menu.Menu position='right'>
+							<Dropdown item text='Utente'>
+								<Dropdown.Menu>
+									<Dropdown.Item>Logout</Dropdown.Item>
+								</Dropdown.Menu>
+							</Dropdown>
+						</Menu.Menu>
+					</Menu>
+				</Segment>
+			</div>
 		);
 	}
 }
- 
+
+//Check logged user
 const userPool = new CognitoUserPool(poolData);
 let currentUser = userPool.getCurrentUser();
 
 if (currentUser != null) {
+	console.log(currentUser);
 	currentUser.getSession(function(err, session) {
 		if (err) {
 			window.location.href = "/login";
 		}
 		if (session.isValid()) {
 			ReactDOM.render(
-				<Dashboard />,
-				document.getElementById('dashboard')
+				<Shared />,
+				document.getElementById('header-app')
 			);
 		}
 	});

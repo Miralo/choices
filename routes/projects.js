@@ -10,11 +10,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add', function(req, res) {
-	//var text_value = req.body.text
+	var title = req.body.title;
+	var description = req.body.description;
+	var date = req.body.date;
 
-	/*knex('lista_spesa').insert({text: text_value, state: false}).then(function(result){
-		res.json({ success: true, message: 'ok' });
-	});*/
+	knex('projects').insert({title: title, description: description, created_at: date}).then(function(result){
+		res.json({ success: true });
+	});
 })
 
 // Elenco lista

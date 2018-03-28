@@ -17,35 +17,15 @@
 
 	<body>
 		{% block header %}
-			<div class="ui inverted segment" style="border-radius: 0px">
-				<div class="ui inverted secondary menu">
-					<a class="active item" href="/">
-						Home
-					</a>
-					<a class="item" href="/projects">
-						Projects
-					</a>
-					<a class="item" href="/contacts">
-						Contacts
-					</a>
-				</div>
-			</div>
+			<div id="header-app"></div>
 		{% endblock %}
 
 		<div class="ui container">
 			{% block contents %}{% endblock %}
-		</div>		
+		</div>
 
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.10/semantic.min.js"></script>
-
-		{% block bottom_scripts %}
-			<script src="https://sdk.amazonaws.com/js/aws-sdk-2.190.0.min.js"></script>
-		{% endblock %}
+		<script src="/dist/common.entry.js"></script>
+		<script src="/dist/shared.entry.js"></script>
+		{% block bottom_scripts %}{% endblock %}
 	</body>
 </html>

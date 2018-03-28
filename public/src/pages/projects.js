@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Toastr from 'toastr';
+import { Button, Modal } from 'semantic-ui-react'
 import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
 import {
@@ -8,14 +9,14 @@ import {
 	USER_POOL_ID,
 	CLIENT_ID,
 	poolData
-} from '../utils/aws_consts'
+} from '../../utils/aws_consts'
 
 class Projects extends React.Component {
 	constructor() {
 		super();
 		this.state = {}
 
-		//this.handleChange = this.handleChange.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	handleChange(event) {
@@ -39,7 +40,15 @@ class Projects extends React.Component {
 					</div>
 				</h2>
 				<div className="ui divider"></div>
-				<button className="ui teal button">Aggiungi nuovo progetto</button>
+				<Modal trigger={<Button color="teal">Aggiungi nuovo progetto</Button>}>
+					<Modal.Header>Select a Photo</Modal.Header>
+					<Modal.Content image>
+						<Modal.Description>
+							<p>We've found the following gravatar image associated with your e-mail address.</p>
+							<p>Is it okay to use this photo?</p>
+						</Modal.Description>
+					</Modal.Content>
+				</Modal>
 
 				<div className="ui special cards" style={{marginTop: '30px'}}>
 					<div className="ui card">
@@ -96,28 +105,31 @@ class Projects extends React.Component {
 						</div>
 					</div>
 				</div>
-			</div>
-			
 
+				<div className="ui modal add-project">
+					<i className="close icon"></i>
+					<div className="header">
+						Modal Title
+					</div>
+					<div className="image content">
+						<div className="image">
+							An image can appear on left or an icon
+						</div>
+						<div className="description">
+							A description can appear on the right
+						</div>
+					</div>
+					<div className="actions">
+						<div className="ui button">Cancel</div>
+						<div className="ui button">OK</div>
+					</div>
+				</div>
+			</div>
 		);
 	}
 }
 
-
-//Check logged user
-const userPool = new CognitoUserPool(poolData);
-let currentUser = userPool.getCurrentUser();
-
-if (currentUser != null) {
-	currentUser.getSession(function(err, session) {
-		if (err) {
-			window.location.href = "/login";
-		}
-		if (session.isValid()) {
-			ReactDOM.render(
-				<Projects />,
-				document.getElementById('projects')
-			);
-		}
-	});
-}
+ReactDOM.render(
+	<Projects />,
+	document.getElementById('projects')
+);
