@@ -64,3 +64,4 @@ typings/
 
 semantic.json
 public/stylesheets/prepros-6.config
+package-lock.json
