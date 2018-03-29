@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Toastr from 'toastr';
+import axios from 'axios'
 import { Button, Modal, Form, TextArea } from 'semantic-ui-react'
 import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
@@ -17,9 +18,11 @@ class Projects extends React.Component {
 		this.state = {
 			title: '',
 			description: '',
+			projects: []
 		}
 
 		this.handleChange = this.handleChange.bind(this);
+		this.createProject = this.createProject.bind(this);
 	}
 
 	handleChange(event) {
@@ -30,6 +33,21 @@ class Projects extends React.Component {
 		this.setState({
 			[name]: value
 		});
+	}
+
+	createProject() {
+		if(this.state.title != '') {
+			let now = moment().locale('it').format('DD-MM-YYYY');
+			
+			axios.post('/projects/add', {title: this.state.title, description: this.state.description, created_at: now})
+			.then(function (response) {
+				Toastr.success('Progetto creato con successo!');
+				setTimeout(function(){ location.reload() }, 2000);
+			})
+			.catch(function (error) {
+				Toastr.error('Errore di connessione');
+			});
+		}
 	}
 
 	render() {
@@ -55,86 +73,11 @@ class Projects extends React.Component {
 							<Form.Field>
 								<TextArea name="description" placeholder='Descrizione' value={this.state.description} onChange={this.handleChange} />
 							</Form.Field>
-							<Button color="green" type='submit'>Crea Progetto</Button>
+							<Button color="green" type='submit' onClick={this.createProject}>Crea Progetto</Button>
 						</Form>
 						</Modal.Description>
 					</Modal.Content>
 				</Modal>
-
-				<div className="ui special cards" style={{marginTop: '30px'}}>
-					<div className="ui card">
-						<div className="content">
-							<a className="header">Kristy</a>
-							<div className="meta">
-								<span className="date">Joined in 2013</span>
-							</div>
-							<div className="description">
-								Kristy is an art director living in New York.
-							</div>
-						</div>
-						<div className="extra content">
-							<a>
-								<i className="user icon"></i>
-								22 Friends
-							</a>
-						</div>
-					</div>
-					
-					<div className="ui card">
-						<div className="content">
-							<a className="header">Kristy</a>
-							<div className="meta">
-								<span className="date">Joined in 2013</span>
-							</div>
-							<div className="description">
-								Kristy is an art director living in New York.
-							</div>
-						</div>
-						<div className="extra content">
-							<a>
-								<i className="user icon"></i>
-								22 Friends
-							</a>
-						</div>
-					</div>
-
-					<div className="ui card">
-						<div className="content">
-							<a className="header">Kristy</a>
-							<div className="meta">
-								<span className="date">Joined in 2013</span>
-							</div>
-							<div className="description">
-								Kristy is an art director living in New York.
-							</div>
-						</div>
-						<div className="extra content">
-							<a>
-								<i className="user icon"></i>
-								22 Friends
-							</a>
-						</div>
-					</div>
-				</div>
-
-				<div className="ui modal add-project">
-					<i className="close icon"></i>
-					<div className="header">
-						Modal Title
-					</div>
-					<div className="image content">
-						<div className="image">
-							An image can appear on left or an icon
-						</div>
-						<div className="description">
-							A description can appear on the right
-						</div>
-					</div>
-					<div className="actions">
-						<div className="ui button">Cancel</div>
-						<div className="ui button">OK</div>
-					</div>
-				</div>
 			</div>
 		);
 	}

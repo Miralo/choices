@@ -1,8 +1,8 @@
 var express = require('express')
   , router = express.Router()
 
-//var config = require('../knexfile.js');
-//var knex = require('knex')(config['development']);
+var config = require('../knexfile.js');
+var knex = require('knex')(config['development']);
 
 /* GET Projects Page. */
 router.get('/', function(req, res, next) {
