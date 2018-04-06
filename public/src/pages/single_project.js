@@ -47,7 +47,7 @@ class Project extends React.Component {
 	}
 
 	getSections(project_id) {
-		axios.post('/sections/get/', {project_id: project_id})
+		axios.get('/sections/get/' + project_id)
 		.then(function (response) {
 			console.log(response);
 		})
@@ -83,7 +83,7 @@ class Project extends React.Component {
 						<Form>
 							<Form.Field>
 								<label>Nome della sezione</label>
-								<input name="title" placeholder='Es: Slider, Lista prodotti, Homepage ecc...' value={this.state.section_title} onChange={this.handleChange} />
+								<input name="section_title" placeholder='Es: Slider, Lista prodotti, Homepage ecc...' value={this.state.section_title} onChange={this.handleChange} />
 							</Form.Field>
 							<Button color="green" type='submit' onClick={this.createSection}>Crea Sezione</Button>
 						</Form>

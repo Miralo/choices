@@ -10,13 +10,13 @@ router.post('/add', function(req, res) {
 	var description = req.body.description;
 	var date = req.body.created_at;
 
-	knex('projects').insert({title: title, description: description, created_at: date}).then(function(result){
+	knex('sections').insert({title: title}).then(function(result){
 		res.json({ success: true });
 	});
 })
 
 /* View project's sections */
-router.post('/get/:project_id', function(req, res) {
+router.get('/get/:project_id', function(req, res) {
 	var id = req.params.id;
 
 	knex.select().table('sections').where('project_id', id).then(function(item) {
