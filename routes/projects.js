@@ -6,9 +6,13 @@ var knex = require('knex')(config['development']);
 
 /* GET Projects Page. */
 router.get('/', function(req, res, next) {
-	res.render('projects', { title: 'Choices | I tuoi progetti'});
+	knex.select().table('projects').then(function(items) {
+		var results = JSON.stringify(items);
+		res.render('projects', { title: 'Choices | I tuoi progetti', projects: results });
+	});
 });
 
+/* Add a new project */
 router.post('/add', function(req, res) {
 	var title = req.body.title;
 	var description = req.body.description;
@@ -19,38 +23,31 @@ router.post('/add', function(req, res) {
 	});
 })
 
-// Elenco lista
-/*router.get('/spesa', function(req, res) {
-	knex.select().table('lista_spesa').then(function(items) {
-		var stringa = JSON.stringify(items);
-		res.render('spesa', { title: 'Lista della spesa', lista_spesa: stringa, user: req.user });
-	});
-})*/
-
-/*
-router.post('/spesa/edit/:id', function(req, res) {
+router.get('/view/:id', function(req, res) {
 	var id = req.params.id;
-	var state = req.body.state;
 
-	knex('lista_spesa').where('uid', id).update({state: state}).then(function (count) {
+	knex.select().table('projects').where('uid', id).then(function(item) {
+		var result = JSON.stringify(item);
+		res.render('single_project', { title: 'Choices | ' + item.title, project: result });
+	});
+})
+
+router.post('/edit/:id', function(req, res) {
+	var id = req.params.id;
+	var title = req.body.title;
+	var description = req.body.description;
+
+	knex('projects').where('uid', id).update({title: title, description: description}).then(function (count) {
 		res.json({ success: true, message: 'ok' });
 	})
 })
 
-router.delete('/spesa/edit/:id', function(req, res) {
+router.delete('/edit/:id', function(req, res) {
 	var id = req.params.id;
 
-	knex('lista_spesa').where('uid', id).del().then(function (count) {
+	knex('projects').where('uid', id).del().then(function (count) {
 		res.json({ success: true, message: 'ok' });
 	})
 })
-
-// Elenco ricette
-router.get('/ricette', function(req, res) {
-	knex.select().table('ricette').then(function(items) {
-		var stringa = JSON.stringify(items);
-		res.render('ricette', { title: 'Ricette buonissime', ricette: stringa, user: req.user });
-	});
-})*/
 
 module.exports = router

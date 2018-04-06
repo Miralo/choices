@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Toastr from 'toastr';
 import axios from 'axios'
-import { Button, Modal, Form, TextArea } from 'semantic-ui-react'
+import { Button, Modal, Form, TextArea, Card } from 'semantic-ui-react'
 import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
 import {
@@ -12,13 +12,16 @@ import {
 	poolData
 } from '../../utils/aws_consts'
 
+//Handle projects from server
+get_projects = get_projects.replace(/&quot;/g,'"');
+get_projects = JSON.parse(get_projects);
+
 class Projects extends React.Component {
 	constructor() {
 		super();
 		this.state = {
 			title: '',
 			description: '',
-			projects: []
 		}
 
 		this.handleChange = this.handleChange.bind(this);
@@ -51,6 +54,8 @@ class Projects extends React.Component {
 	}
 
 	render() {
+		let proj_list = this.props.projects;
+
 		return (
 			<div>
 				<h2 className="ui header">
@@ -78,12 +83,25 @@ class Projects extends React.Component {
 						</Modal.Description>
 					</Modal.Content>
 				</Modal>
+
+				<Card.Group style={{marginTop: '50px'}}>
+					{proj_list.map((project, index) =>
+						<Card
+							key={project.uid}
+							href={'/projects/view/' + project.uid}
+							header={project.title}
+							meta={project.created_at}
+							description={project.description}
+						/>
+					)}
+				</Card.Group>
+				
 			</div>
 		);
 	}
 }
 
 ReactDOM.render(
-	<Projects />,
+	<Projects projects={get_projects}/>,
 	document.getElementById('projects')
 );
