@@ -17,7 +17,7 @@ router.post('/add', function(req, res) {
 
 /* View project's sections */
 router.get('/get/:project_id', function(req, res) {
-	var id = req.params.id;
+	var id = req.params.project_id;
 
 	knex.select().table('sections').where('project_id', id).then(function(item) {
 		var result = JSON.stringify(item);

@@ -33,9 +33,9 @@ class Project extends React.Component {
 		});
 	}
 
-	createSection() {
+	createSection(project_id) {
 		if(this.state.section_title != '') {
-			axios.post('/sections/add', {title: this.state.title})
+			axios.post('/sections/add', {title: this.state.section_title, project_id: project_id})
 			.then(function (response) {
 				Toastr.success('Sezione creato con successo!');
 				setTimeout(function(){ location.reload() }, 2000);
@@ -85,7 +85,7 @@ class Project extends React.Component {
 								<label>Nome della sezione</label>
 								<input name="section_title" placeholder='Es: Slider, Lista prodotti, Homepage ecc...' value={this.state.section_title} onChange={this.handleChange} />
 							</Form.Field>
-							<Button color="green" type='submit' onClick={this.createSection}>Crea Sezione</Button>
+							<Button color="green" type='submit' onClick={this.createSection(project_data.uid)}>Crea Sezione</Button>
 						</Form>
 						</Modal.Description>
 					</Modal.Content>
