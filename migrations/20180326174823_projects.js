@@ -1,9 +1,9 @@
 exports.up = function (knex, Promise) {
 	return Promise.all([
-		knex.schema.createTable('projects', function (table) {
+		knex.schema.createTableIfNotExists('projects', function (table) {
 			table.increments('uid').primary();
 			table.string('title');
-			table.string('created_at');
+			table.timestamp('created_at').defaultTo(knex.fn.now())
 			table.string('description');
 		}),
 	])

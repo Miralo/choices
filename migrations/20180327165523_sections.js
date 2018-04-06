@@ -1,9 +1,9 @@
 exports.up = function (knex, Promise) {
 	return Promise.all([
-		knex.schema.createTable('sections', function (table) {
+		knex.schema.createTableIfNotExists('sections', function (table) {
 			table.increments('uid').primary();
 			table.string('title');
-			table.date('created_at');
+			table.timestamp('created_at').defaultTo(knex.fn.now())
 			table.integer('project_id').unsigned();
 			table.foreign('project_id').references('projects.uid')
 		}),
