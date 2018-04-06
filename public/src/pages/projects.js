@@ -32,6 +32,10 @@ class Projects extends React.Component {
 		});
 	}
 
+	formatDate(date) {
+		return moment(date).locale('it').format('DD/MM/YYYY')
+	}
+
 	createProject() {
 		if(this.state.title != '') {
 			axios.post('/projects/add', {title: this.state.title, description: this.state.description})
@@ -82,7 +86,7 @@ class Projects extends React.Component {
 							key={project.uid}
 							href={'/projects/view/' + project.uid}
 							header={project.title}
-							meta={'Creato: ' + project.created_at}
+							meta={'Creato: ' + this.formatDate(project.created_at)}
 							description={he.decode(project.description)}
 						/>
 					)}

@@ -15,9 +15,12 @@ class Project extends React.Component {
 		super();
 		this.state = {
 			section_title: '',
+			sections: []
 		}
 
 		this.handleChange = this.handleChange.bind(this);
+		this.createSection = this.createSection.bind(this);
+		this.getSections = this.getSections.bind(this);
 	}
 
 	handleChange(event) {
@@ -43,18 +46,20 @@ class Project extends React.Component {
 		}
 	}
 
-	getSections() {
-		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const name = target.name;
-
-		this.setState({
-			[name]: value
+	getSections(project_id) {
+		axios.post('/sections/get/', {project_id: project_id})
+		.then(function (response) {
+			console.log(response);
+		})
+		.catch(function (error) {
+			Toastr.error('Errore di connessione');
 		});
 	}
 
 	componentDidMount() {
 		let project_data = this.props.project[0];
+
+		this.getSections(project_data.uid);
 	}
 
 	render() {
