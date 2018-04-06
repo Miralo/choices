@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as Toastr from 'toastr';
 import axios from 'axios'
+//He is a Html entities decode/encode library
+import he from 'he'
 import { Button, Modal, Form, TextArea, Card } from 'semantic-ui-react'
 import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
@@ -40,7 +42,7 @@ class Projects extends React.Component {
 
 	createProject() {
 		if(this.state.title != '') {
-			let now = moment().locale('it').format('DD-MM-YYYY');
+			let now = moment().locale('it').format('DD/MM/YYYY');
 			
 			axios.post('/projects/add', {title: this.state.title, description: this.state.description, created_at: now})
 			.then(function (response) {
@@ -90,8 +92,8 @@ class Projects extends React.Component {
 							key={project.uid}
 							href={'/projects/view/' + project.uid}
 							header={project.title}
-							meta={project.created_at}
-							description={project.description}
+							meta={'Creato: ' + project.created_at}
+							description={he.decode(project.description)}
 						/>
 					)}
 				</Card.Group>

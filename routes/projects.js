@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 router.post('/add', function(req, res) {
 	var title = req.body.title;
 	var description = req.body.description;
-	var date = req.body.date;
+	var date = req.body.created_at;
 
 	knex('projects').insert({title: title, description: description, created_at: date}).then(function(result){
 		res.json({ success: true });
