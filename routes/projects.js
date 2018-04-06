@@ -16,19 +16,19 @@ router.get('/', function(req, res, next) {
 router.post('/add', function(req, res) {
 	var title = req.body.title;
 	var description = req.body.description;
-	var date = req.body.created_at;
 
-	knex('projects').insert({title: title, description: description, created_at: date}).then(function(result){
+	knex('projects').insert({title: title, description: description}).then(function(result){
 		res.json({ success: true });
 	});
 })
 
+/* View a single project */
 router.get('/view/:id', function(req, res) {
 	var id = req.params.id;
 
 	knex.select().table('projects').where('uid', id).then(function(item) {
 		var result = JSON.stringify(item);
-		res.render('single_project', { title: 'Choices | ' + item.title, project: result });
+		res.render('single_project', { title: 'Choices | ' + item[0].title, project: result });
 	});
 })
 

@@ -1,14 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as Toastr from 'toastr';
-import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
-
-import {
-	REGION,
-	USER_POOL_ID,
-	CLIENT_ID,
-	poolData
-} from '../../utils/aws_consts'
 
 class Dashboard extends React.Component {
 	constructor() {

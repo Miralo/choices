@@ -5,14 +5,6 @@ import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
 import { Button, Modal, Form, TextArea, Card } from 'semantic-ui-react'
-import { CognitoUserPool, CognitoUser, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
-
-import {
-	REGION,
-	USER_POOL_ID,
-	CLIENT_ID,
-	poolData
-} from '../../utils/aws_consts'
 
 //Handle projects from server
 get_projects = get_projects.replace(/&quot;/g,'"');
@@ -42,9 +34,7 @@ class Projects extends React.Component {
 
 	createProject() {
 		if(this.state.title != '') {
-			let now = moment().locale('it').format('DD/MM/YYYY');
-			
-			axios.post('/projects/add', {title: this.state.title, description: this.state.description, created_at: now})
+			axios.post('/projects/add', {title: this.state.title, description: this.state.description})
 			.then(function (response) {
 				Toastr.success('Progetto creato con successo!');
 				setTimeout(function(){ location.reload() }, 2000);
@@ -69,7 +59,7 @@ class Projects extends React.Component {
 				</h2>
 				<div className="ui divider"></div>
 				<Modal trigger={<Button color="teal">Aggiungi nuovo progetto</Button>} closeIcon>
-					<Modal.Header>Select a Photo</Modal.Header>
+					<Modal.Header>Aggiungi nuovo progetto</Modal.Header>
 					<Modal.Content image>
 						<Modal.Description>
 						<Form>
