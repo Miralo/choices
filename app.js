@@ -64,6 +64,10 @@ app.use('/dashboard', require('./routes/dashboard'));
 var projects = require('./routes/projects');
 app.use('/projects', projects);
 
+//sections ROUTES
+var sections = require('./routes/sections');
+app.use('/sections', sections);
+
 
 /** END OF ROUTES SETUP */
 /** =============================== */

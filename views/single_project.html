@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+	<div id="project"></div>
+{% endblock %}
+
+{% block bottom_scripts %}
+	<script>
+		var get_project = '{{ project }}';
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment-with-locales.min.js"></script>
+	<script src="/dist/single_project.entry.js"></script>
+{% endblock %}

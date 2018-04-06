@@ -10,6 +10,7 @@ module.exports = {
 		index: './public/src/pages/index.js',
 		dashboard: './public/src/pages/dashboard.js',
 		projects: './public/src/pages/projects.js',
+		single_project: './public/src/pages/single_project.js',
 	},
 	output: {
 		path: path.resolve(__dirname, './public/dist'),
