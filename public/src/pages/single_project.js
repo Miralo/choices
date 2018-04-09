@@ -4,7 +4,7 @@ import * as Toastr from 'toastr';
 import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
-import { Button, Modal, Form, TextArea, Card } from 'semantic-ui-react'
+import { Button, Modal, Form, TextArea, Card, Tab } from 'semantic-ui-react'
 
 //Handle projects from server
 get_project = get_project.replace(/&quot;/g,'"');
@@ -47,9 +47,14 @@ class Project extends React.Component {
 	}
 
 	getSections(project_id) {
+		let _this = this;
 		axios.get('/sections/get/' + project_id)
 		.then(function (response) {
-			console.log(response);
+			if(response.data.length > 0) {
+				_this.setState({
+					sections: response.data
+				})
+			}
 		})
 		.catch(function (error) {
 			Toastr.error('Errore di connessione');
@@ -64,6 +69,15 @@ class Project extends React.Component {
 
 	render() {
 		let project_data = this.props.project[0];
+		let panes = [];
+		
+		if(this.state.sections.length > 0) {
+			this.state.sections.map(section => {
+				let temp_pane = { menuItem: section.title, render: () => <Tab.Pane>Ciao, ti trovi nella sezione {section.title}</Tab.Pane> }
+				
+				panes.push(temp_pane);
+			});
+		}
 
 		return (
 			<div>
@@ -85,11 +99,15 @@ class Project extends React.Component {
 								<label>Nome della sezione</label>
 								<input name="section_title" placeholder='Es: Slider, Lista prodotti, Homepage ecc...' value={this.state.section_title} onChange={this.handleChange} />
 							</Form.Field>
-							<Button color="green" type='submit' onClick={this.createSection(project_data.uid)}>Crea Sezione</Button>
+							<Button color="green" type='submit' onClick={() => this.createSection(project_data.uid)}>Crea Sezione</Button>
 						</Form>
 						</Modal.Description>
 					</Modal.Content>
 				</Modal>
+
+				{panes.length > 0 &&
+					<Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes} />
+				}
 			</div>
 		);
 	}

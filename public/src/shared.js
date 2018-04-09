@@ -17,7 +17,7 @@ class Shared extends React.Component {
 			<div>
 				<Segment inverted style={{ borderRadius: '0px', marginBottom: '40px', padding: '5px 15px' }}>
 					<Menu inverted pointing secondary>
-						<Menu.Item name='home' href="/">Home</Menu.Item>
+						<Menu.Item name='dashboard' href="/dashboard">Dashboard</Menu.Item>
 						<Menu.Item name='projects' href="/projects">Projects</Menu.Item>
 						<Menu.Item name='contacts' href="/contacts">Contacts</Menu.Item>
 
