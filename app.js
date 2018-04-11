@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret: 'supercat', saveUninitialized: true, resave: true}));
+app.use(session({secret: process.env.secret, saveUninitialized: true, resave: true}));
 
 /** END OF GENERIC MIDDLEWARE SETUP */
 /** =============================== */

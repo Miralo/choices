@@ -46,19 +46,17 @@ class Project extends React.Component {
 		}
 	}
 
-	getSections(project_id) {
+	async getSections(project_id) {
 		let _this = this;
-		axios.get('/sections/get/' + project_id)
-		.then(function (response) {
-			if(response.data.length > 0) {
-				_this.setState({
-					sections: response.data
-				})
-			}
-		})
-		.catch(function (error) {
-			Toastr.error('Errore di connessione');
-		});
+
+		const response = await axios.get('/sections/get/' + project_id);
+		
+		if(response.data.length > 0) {
+			this.setState({
+				sections: response.data
+			})
+		}
+		
 	}
 
 	componentDidMount() {
@@ -105,9 +103,11 @@ class Project extends React.Component {
 					</Modal.Content>
 				</Modal>
 
-				{panes.length > 0 &&
-					<Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes} />
-				}
+				<div style={{ marginTop: '50px' }}>
+					{panes.length > 0 &&
+						<Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes} />
+					}
+				</div>
 			</div>
 		);
 	}

@@ -4,13 +4,13 @@ var MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
 	entry: {
-		shared: './public/src/shared.js',
-		register: './public/src/pages/register.js',
-		login: './public/src/pages/login.js',
-		index: './public/src/pages/index.js',
-		dashboard: './public/src/pages/dashboard.js',
-		projects: './public/src/pages/projects.js',
-		single_project: './public/src/pages/single_project.js',
+		shared: ['babel-polyfill', './public/src/shared.js'],
+		register: ['babel-polyfill', './public/src/pages/register.js'],
+		login: ['babel-polyfill', './public/src/pages/login.js'],
+		index: ['babel-polyfill', './public/src/pages/index.js'],
+		dashboard: ['babel-polyfill', './public/src/pages/dashboard.js'],
+		projects: ['babel-polyfill', './public/src/pages/projects.js'],
+		single_project: ['babel-polyfill', './public/src/pages/single_project.js'],
 	},
 	output: {
 		path: path.resolve(__dirname, './public/dist'),

@@ -16,6 +16,7 @@
     "amazon-cognito-identity-js": "^1.31.0",
     "aws-sdk": "^2.190.0",
     "axios": "^0.18.0",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "dotenv": "^5.0.0",
@@ -42,6 +43,7 @@
     "babel-minify-webpack-plugin": "^0.3.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-polyfill": "^6.26.0",
     "webpack": "^3.11.0"
   }
 }
