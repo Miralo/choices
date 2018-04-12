@@ -15,7 +15,13 @@ class Project extends React.Component {
 		super();
 		this.state = {
 			section_title: '',
-			sections: []
+			sections: [],
+			choice_title: '',
+			choice_description: '',
+			choice_committant: '',
+			choice_source: '',
+			choice_why: '',
+			choices: []
 		}
 
 		this.handleChange = this.handleChange.bind(this);
@@ -56,7 +62,26 @@ class Project extends React.Component {
 				sections: response.data
 			})
 		}
-		
+	}
+
+	createChoice(section_id) {
+		if(this.state.choice_title != '') {
+			axios.post('/choices/add', {
+				title: this.state.choice_title,
+				description: this.state.choice_description,
+				committant: this.state.choice_committant,
+				source: this.state.choice_source,
+				why: this.state.choice_why,
+				section_id: section_id
+			})
+			.then(function (response) {
+				Toastr.success('Sezione creato con successo!');
+				setTimeout(function(){ location.reload() }, 2000);
+			})
+			.catch(function (error) {
+				Toastr.error('Errore di connessione');
+			});
+		}
 	}
 
 	componentDidMount() {
@@ -71,7 +96,40 @@ class Project extends React.Component {
 		
 		if(this.state.sections.length > 0) {
 			this.state.sections.map(section => {
-				let temp_pane = { menuItem: section.title, render: () => <Tab.Pane>Ciao, ti trovi nella sezione {section.title}</Tab.Pane> }
+				let temp_pane = { 
+					menuItem: section.title, render: () => <Tab.Pane>
+
+						<Modal trigger={<Button color="green">Aggiungi nuova scelta</Button>} closeIcon>
+							<Modal.Header>Aggiungi nuova scelta</Modal.Header>
+							<Modal.Content image>
+								<Modal.Description>
+								<Form>
+									<Form.Field>
+										<label>Titolo</label>
+										<input name="choice_title" placeholder="Es: Cambiare grafica caption" value={this.state.choice_title} onChange={this.handleChange} />
+									</Form.Field>
+									<Form.Field>
+										<label>Committente</label>
+										<input name="choice_committant" placeholder="Es: il capo" value={this.state.choice_committant} onChange={this.handleChange} />
+									</Form.Field>
+									<Form.Field>
+										<label>Provenienza</label>
+										<input name="choice_source" placeholder="Es: Email, ultima riunione ecc.." value={this.state.choice_source} onChange={this.handleChange} />
+									</Form.Field>
+									<Form.Field>
+										<TextArea name="choice_why" placeholder='Motivo del cambiamento da eseguire' value={this.state.choice_why} onChange={this.handleChange} />
+									</Form.Field>
+									<Form.Field>
+										<TextArea name="choice_description" placeholder='Descrizione' value={this.state.choice_description} onChange={this.handleChange} />
+									</Form.Field>
+									<Button color="green" type='submit' onClick={() => this.createChoice(section.uid)}>Crea Scelta</Button>
+								</Form>
+								</Modal.Description>
+							</Modal.Content>
+						</Modal>
+
+					</Tab.Pane>
+				}
 				
 				panes.push(temp_pane);
 			});

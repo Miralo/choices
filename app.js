@@ -64,10 +64,13 @@ app.use('/dashboard', require('./routes/dashboard'));
 var projects = require('./routes/projects');
 app.use('/projects', projects);
 
-//sections ROUTES
+//SECTIONS ROUTES
 var sections = require('./routes/sections');
 app.use('/sections', sections);
 
+//CHOICES ROUTES
+var choices = require('./routes/choices');
+app.use('/choices', choices);
 
 /** END OF ROUTES SETUP */
 /** =============================== */

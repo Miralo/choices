@@ -8,7 +8,6 @@ var knex = require('knex')(config['development']);
 router.post('/add', function(req, res) {
 	var title = req.body.title;
 	var id = req.body.project_id;
-	var date = req.body.created_at;
 
 	knex('sections').insert({title: title, project_id: id}).then(function(result){
 		res.json({ success: true });
