@@ -28,7 +28,7 @@ module.exports = {
 		]
 	},
 	plugins: [
-		new MinifyPlugin(),
+		//new MinifyPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'common' // Specify the common bundle's name.
 		})

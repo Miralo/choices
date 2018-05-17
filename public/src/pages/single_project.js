@@ -5,6 +5,7 @@ import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
 import { Button, Modal, Form, TextArea, Card, Tab } from 'semantic-ui-react'
+import SectionPane from '../components/section_pane'
 
 //Handle projects from server
 get_project = get_project.replace(/&quot;/g,'"');
@@ -20,8 +21,7 @@ class Project extends React.Component {
 			choice_description: '',
 			choice_committant: '',
 			choice_source: '',
-			choice_why: '',
-			choices: []
+			choice_why: ''
 		}
 
 		this.handleChange = this.handleChange.bind(this);
@@ -127,6 +127,8 @@ class Project extends React.Component {
 								</Modal.Description>
 							</Modal.Content>
 						</Modal>
+
+						<SectionPane section={section.uid}></SectionPane>
 
 					</Tab.Pane>
 				}
