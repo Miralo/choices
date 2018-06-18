@@ -7,8 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var nunjucks = require('nunjucks');
-var passport = require('passport');
-var Auth0Strategy = require('passport-auth0');
 
 var app = express();
 
@@ -32,7 +30,7 @@ app.set('view engine', 'html');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookieParser(process.env.secret));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({secret: process.env.secret, saveUninitialized: true, resave: true}));
 
