@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import * as Toastr from 'toastr';
 import { CognitoUserPool, CognitoUserAttribute, CognitoUser, AuthenticationDetails, CognitoIdentityCredentials, WebIdentityCredentials } from 'amazon-cognito-identity-js';
 
 import {
@@ -17,7 +18,7 @@ class RegisterForm extends React.Component {
 		this.state = {
 			name: '',
 			email: '',
-			password: '', 
+			password: '',
 		}
 
 		this.RegisterUser = this.RegisterUser.bind(this);
@@ -50,11 +51,11 @@ class RegisterForm extends React.Component {
 		var cognitoUser;
 		userPool.signUp(this.state.email, this.state.password, attributeList, null, function(err, result){
 			if (err) {
-				toastr.error(err);
+				Toastr.error(err);
 				return;
 			}
 			cognitoUser = result.user;
-			toastr.success('Complimenti ' + cognitoUser.getUsername() + ', ti sei registrato correttamente!');
+			Toastr.success('Complimenti ' + cognitoUser.getUsername() + ', ti sei registrato correttamente!');
 		});
 	}
 

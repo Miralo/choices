@@ -56,23 +56,28 @@ class SectionPane extends React.Component {
 	render() {
 		const { activeIndex } = this.state;
 		let choices = this.state.choices;
-		return (
-			<Accordion styled>
+		let content = null;
+
+		if(choices.length > 0) {
+			content = <Accordion styled style={{ width: '100%', marginTop: '30px' }}>
 				{choices.map((choice, index) =>
-					<div>
-						<Accordion.Title active={activeIndex === 0} index={0} onClick={this.handleClick}>
-						<Icon name='dropdown' />
-						What is a dog?
+					<div key={index}>
+						<Accordion.Title active={activeIndex === index} index={index} onClick={this.handleClick}>
+							<Icon name='dropdown' />
+							{choice.title}
 						</Accordion.Title>
-						<Accordion.Content active={activeIndex === 0}>
-						<p>
-							A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be found as a
-							{' '}welcome guest in many households across the world.
-						</p>
+						<Accordion.Content active={activeIndex === index}>
+							<p>
+								{choice.description}
+							</p>
 						</Accordion.Content>
 					</div>
 				)}
 			</Accordion>
+		}
+
+		return (
+			<div className="choices-accordion">{content}</div>
 		);
 	}
 }
