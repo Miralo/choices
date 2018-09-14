@@ -27,6 +27,7 @@ class Project extends React.Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.createSection = this.createSection.bind(this);
 		this.getSections = this.getSections.bind(this);
+		this.deleteProject = this.deleteProject.bind(this);
 	}
 
 	handleChange(event) {
@@ -75,13 +76,25 @@ class Project extends React.Component {
 				section_id: section_id
 			})
 			.then(function (response) {
-				Toastr.success('Sezione creato con successo!');
+				Toastr.success('Sezione creata con successo!');
 				setTimeout(function(){ location.reload() }, 2000);
 			})
 			.catch(function (error) {
 				Toastr.error('Errore di connessione');
 			});
 		}
+	}
+
+	deleteProject(project_id) {
+		console.log('dai cancella');
+		axios.delete('/projects/delete/' + project_id)
+		.then(function (response) {
+			Toastr.success('Progetto eliminato con successo!');
+			setTimeout(function(){ window.location.href = "/projects"; }, 2000);
+		})
+		.catch(function (error) {
+			Toastr.error('Errore di connessione');
+		});
 	}
 
 	componentDidMount() {
@@ -140,10 +153,13 @@ class Project extends React.Component {
 		return (
 			<div>
 				<h2 className="ui header">
+					<Button color="red" floated="right" onClick={() => this.deleteProject(project_data.uid)}>Elimina progetto</Button>
 					<i className="folder outline icon"></i>
 					<div className="content">
 						{project_data.title}
-						<div className="sub header">{he.decode(project_data.description)}</div>
+						<div className="sub header">
+							{he.decode(project_data.description)}
+						</div>
 					</div>
 				</h2>
 				<div className="ui divider"></div>

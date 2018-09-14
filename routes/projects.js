@@ -42,12 +42,21 @@ router.post('/edit/:id', function(req, res) {
 	})
 })
 
-router.delete('/edit/:id', function(req, res) {
+router.delete('/delete/:id', function(req, res) {
 	var id = req.params.id;
+	var project_sections = null;
 
-	knex('projects').where('uid', id).del().then(function (count) {
-		res.json({ success: true, message: 'ok' });
-	})
+	//Seleziono le sezioni del progetto
+	knex.select('id').table('sections').where('project_id', id).then(function(items) {
+		project_sections = items;
+	});
+
+	//Cancello le scelte appartenenti alle sezioni del progetto
+	knex('choices').whereIn('section_id', project_sections).del().then(function (count) {})
+
+	//Cancello le sezioni e il progetto stesso
+	knex('sections').where('project_id', id).del().then(function (count) {})
+	knex('projects').where('uid', id).del().then(function (count) {})
 })
 
 module.exports = router
