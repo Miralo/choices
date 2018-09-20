@@ -4,7 +4,7 @@ import * as Toastr from 'toastr';
 import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
-import { Button, Form, TextArea, Accordion, Icon } from 'semantic-ui-react'
+import { Accordion, Icon } from 'semantic-ui-react'
 
 class SectionPane extends React.Component {
 	constructor() {

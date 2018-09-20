@@ -4,7 +4,7 @@ import * as Toastr from 'toastr';
 import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
-import { Button, Modal, Form, TextArea, Card } from 'semantic-ui-react'
+import { Button, Modal, Form, TextArea, Card, Icon } from 'semantic-ui-react'
 
 //Handle projects from server
 get_projects = get_projects.replace(/&quot;/g,'"');
@@ -62,7 +62,7 @@ class Projects extends React.Component {
 					</div>
 				</h2>
 				<div className="ui divider"></div>
-				<Modal trigger={<Button color="teal">Aggiungi nuovo progetto</Button>} closeIcon>
+				<Modal trigger={<Button color="teal"><Icon name='add square' /> Aggiungi nuovo progetto</Button>} closeIcon>
 					<Modal.Header>Aggiungi nuovo progetto</Modal.Header>
 					<Modal.Content image>
 						<Modal.Description>
@@ -74,7 +74,7 @@ class Projects extends React.Component {
 							<Form.Field>
 								<TextArea name="description" placeholder='Descrizione' value={this.state.description} onChange={this.handleChange} />
 							</Form.Field>
-							<Button color="green" type='submit' onClick={this.createProject}>Crea Progetto</Button>
+							<Button color="green" type='submit' onClick={this.createProject}><Icon name='save outline' /> Crea Progetto</Button>
 						</Form>
 						</Modal.Description>
 					</Modal.Content>

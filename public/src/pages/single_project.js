@@ -4,7 +4,7 @@ import * as Toastr from 'toastr';
 import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
-import { Button, Modal, Form, TextArea, Card, Tab } from 'semantic-ui-react'
+import { Button, Modal, Form, TextArea, Tab, Icon } from 'semantic-ui-react'
 import SectionPane from '../components/section_pane'
 
 //Handle projects from server
@@ -86,7 +86,6 @@ class Project extends React.Component {
 	}
 
 	deleteProject(project_id) {
-		console.log('dai cancella');
 		axios.delete('/projects/delete/' + project_id)
 		.then(function (response) {
 			Toastr.success('Progetto eliminato con successo!');
@@ -112,7 +111,7 @@ class Project extends React.Component {
 				let temp_pane = { 
 					menuItem: section.title, render: () => <Tab.Pane>
 
-						<Modal trigger={<Button color="green">Aggiungi nuova scelta</Button>} closeIcon>
+						<Modal trigger={<Button color="green"><Icon name='add' /> Aggiungi nuova scelta</Button>} closeIcon>
 							<Modal.Header>Aggiungi nuova scelta</Modal.Header>
 							<Modal.Content image>
 								<Modal.Description>
@@ -135,7 +134,7 @@ class Project extends React.Component {
 									<Form.Field>
 										<TextArea name="choice_description" placeholder='Descrizione' value={this.state.choice_description} onChange={this.handleChange} />
 									</Form.Field>
-									<Button color="green" type='submit' onClick={() => this.createChoice(section.uid)}>Crea Scelta</Button>
+									<Button color="green" type='submit' onClick={() => this.createChoice(section.uid)}><Icon name='save' /> Crea Scelta</Button>
 								</Form>
 								</Modal.Description>
 							</Modal.Content>
@@ -153,7 +152,7 @@ class Project extends React.Component {
 		return (
 			<div>
 				<h2 className="ui header">
-					<Button color="red" floated="right" onClick={() => this.deleteProject(project_data.uid)}>Elimina progetto</Button>
+					<Button color="red" floated="right" onClick={() => this.deleteProject(project_data.uid)}><Icon name='delete' /> Elimina progetto</Button>
 					<i className="folder outline icon"></i>
 					<div className="content">
 						{project_data.title}
@@ -164,7 +163,7 @@ class Project extends React.Component {
 				</h2>
 				<div className="ui divider"></div>
 
-				<Modal trigger={<Button color="teal">Aggiungi nuova sezione</Button>} closeIcon>
+				<Modal trigger={<Button color="teal"><Icon name='add square' /> Aggiungi nuova sezione</Button>} closeIcon>
 					<Modal.Header>Aggiungi nuova sezione</Modal.Header>
 					<Modal.Content image>
 						<Modal.Description>
@@ -173,7 +172,7 @@ class Project extends React.Component {
 								<label>Nome della sezione</label>
 								<input name="section_title" placeholder='Es: Slider, Lista prodotti, Homepage ecc...' value={this.state.section_title} onChange={this.handleChange} />
 							</Form.Field>
-							<Button color="green" type='submit' onClick={() => this.createSection(project_data.uid)}>Crea Sezione</Button>
+							<Button color="green" type='submit' onClick={() => this.createSection(project_data.uid)}><Icon name='save' /> Crea Sezione</Button>
 						</Form>
 						</Modal.Description>
 					</Modal.Content>
