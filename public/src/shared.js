@@ -19,6 +19,7 @@ class Shared extends React.Component {
 					<Menu inverted pointing secondary>
 						<Menu.Item name='dashboard' href="/dashboard">Dashboard</Menu.Item>
 						<Menu.Item name='projects' href="/projects">Projects</Menu.Item>
+						<Menu.Item name='agenda' href="/agenda">Agenda</Menu.Item>
 						<Menu.Item name='contacts' href="/contacts">Contacts</Menu.Item>
 
 						<Menu.Menu position='right'>

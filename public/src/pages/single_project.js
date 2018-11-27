@@ -107,7 +107,7 @@ class Project extends React.Component {
 		let panes = [];
 		
 		if(this.state.sections.length > 0) {
-			this.state.sections.map(section => {
+			this.state.sections.forEach((section) => {
 				let temp_pane = { 
 					menuItem: section.title, render: () => <Tab.Pane>
 
@@ -146,6 +146,7 @@ class Project extends React.Component {
 				}
 				
 				panes.push(temp_pane);
+
 			});
 		}
 
@@ -180,7 +181,7 @@ class Project extends React.Component {
 
 				<div style={{ marginTop: '50px' }}>
 					{panes.length > 0 &&
-						<Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes} />
+						<Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes}/>
 					}
 				</div>
 			</div>

@@ -42,14 +42,16 @@ class SectionPane extends React.Component {
 
 		const response = await axios.get('/choices/get/' +section);
 		
-		if(response.data.length > 0) {
-			this.setState({
-				choices: response.data
-			})
-		}
+		this.setState({
+			choices: response.data
+		})
 	}
 
 	componentDidMount() {
+		this.getChoices(this.props.section);
+	}
+
+	componentDidUpdate() {
 		this.getChoices(this.props.section);
 	}
 

@@ -74,7 +74,7 @@ class Projects extends React.Component {
 							<Form.Field>
 								<TextArea name="description" placeholder='Descrizione' value={this.state.description} onChange={this.handleChange} />
 							</Form.Field>
-							<Button color="green" type='submit' onClick={this.createProject}><Icon name='save outline' /> Crea Progetto</Button>
+							<Button color="green" type='submit' onClick={this.createProject}><Icon name='file outline' /> Crea Progetto</Button>
 						</Form>
 						</Modal.Description>
 					</Modal.Content>
