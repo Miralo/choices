@@ -181,7 +181,7 @@ class Project extends React.Component {
 
 				<div style={{ marginTop: '50px' }}>
 					{panes.length > 0 &&
-						<Tab menu={{ fluid: true, vertical: true, tabular: 'right' }} panes={panes}/>
+						<Tab menu={{ fluid: true, vertical: true, tabular: 'left' }} panes={panes}/>
 					}
 				</div>
 			</div>

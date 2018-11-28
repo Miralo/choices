@@ -1,10 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import * as Toastr from 'toastr';
 import axios from 'axios'
 //He is a Html entities decode/encode library
 import he from 'he'
-import { Accordion, Icon } from 'semantic-ui-react'
+import { Accordion, Icon, List } from 'semantic-ui-react'
 
 class SectionPane extends React.Component {
 	constructor() {
@@ -69,7 +67,22 @@ class SectionPane extends React.Component {
 							{choice.title}
 						</Accordion.Title>
 						<Accordion.Content active={activeIndex === index}>
-							<p>
+							<List horizontal>
+								<List.Item>
+									<Icon fitted name='user secret' />
+									{choice.committant}
+								</List.Item>
+								<List.Item>
+									<Icon fitted name='folder' />
+									{choice.source}
+								</List.Item>
+								<List.Item>
+									<Icon fitted name='question' />
+									{choice.why}
+								</List.Item>
+							</List>
+							
+							<p style={{ marginTop: '10px' }}>
 								{choice.description}
 							</p>
 						</Accordion.Content>
