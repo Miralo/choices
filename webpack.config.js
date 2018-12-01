@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var MinifyPlugin = require("babel-minify-webpack-plugin");
 
 module.exports = {
+	mode: 'development',
 	entry: {
 		shared: ['babel-polyfill', './public/src/shared.js'],
 		register: ['./public/src/pages/register.js'],

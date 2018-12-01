@@ -51,7 +51,6 @@ class LoginForm extends React.Component {
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: function (result) {
 				window.location.href = "/dashboard";
-				Toastr.success('Complimenti ' + result.getUsername() + ', ti sei registrato correttamente!');
 			},
 	
 			onFailure: function(err) {
