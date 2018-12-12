@@ -38,7 +38,7 @@ class SectionPane extends React.Component {
 	async getChoices(section) {
 		let _this = this;
 
-		const response = await axios.get('/choices/get/' +section);
+		const response = await axios.get(base_url + '/choices/get/' +section);
 		
 		this.setState({
 			choices: response.data

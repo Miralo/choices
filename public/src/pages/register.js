@@ -52,6 +52,7 @@ class RegisterForm extends React.Component {
 		userPool.signUp(this.state.email, this.state.password, attributeList, null, function(err, result){
 			if (err) {
 				Toastr.error(err);
+				console.log(err);
 				return;
 			}
 			cognitoUser = result.user;

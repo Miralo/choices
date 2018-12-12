@@ -19,7 +19,7 @@ if (currentUser != null) {
 			return;
 		}
 		if (session.isValid()) {
-			window.location.href = "/dashboard";
+			window.location.href = base_url + "dashboard";
 		}
 	});
 }
@@ -31,10 +31,10 @@ class IndexPage extends React.Component {
 				Domestic dogs inherited complex behaviors, such as bite inhibition, from their wolf ancestors, which would have been pack hunters with complex body language.
 				<br/><br/>
 				Detto questo, vuoi loggarti o registrarti?<br/><br/>
-				<a href="/login" className="ui inverted green button">
+				<a href="login" className="ui inverted green button">
 					Login
 				</a>
-				<a href="/register" className="ui inverted blue button">
+				<a href="register" className="ui inverted blue button">
 					Registrati
 				</a>
 			</div>

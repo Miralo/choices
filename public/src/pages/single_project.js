@@ -42,7 +42,7 @@ class Project extends React.Component {
 
 	createSection(project_id) {
 		if(this.state.section_title != '') {
-			axios.post('/sections/add', {title: this.state.section_title, project_id: project_id})
+			axios.post(base_url + '/sections/add', {title: this.state.section_title, project_id: project_id})
 			.then(function (response) {
 				Toastr.success('Sezione creato con successo!');
 				setTimeout(function(){ location.reload() }, 2000);
@@ -56,7 +56,7 @@ class Project extends React.Component {
 	async getSections(project_id) {
 		let _this = this;
 
-		const response = await axios.get('/sections/get/' + project_id);
+		const response = await axios.get(base_url + '/sections/get/' + project_id);
 		
 		if(response.data.length > 0) {
 			this.setState({
@@ -67,7 +67,7 @@ class Project extends React.Component {
 
 	createChoice(section_id) {
 		if(this.state.choice_title != '') {
-			axios.post('/choices/add', {
+			axios.post(base_url + '/choices/add', {
 				title: this.state.choice_title,
 				description: this.state.choice_description,
 				committant: this.state.choice_committant,
@@ -86,10 +86,10 @@ class Project extends React.Component {
 	}
 
 	deleteProject(project_id) {
-		axios.delete('/projects/delete/' + project_id)
+		axios.delete(base_url + '/projects/delete/' + project_id)
 		.then(function (response) {
 			Toastr.success('Progetto eliminato con successo!');
-			setTimeout(function(){ window.location.href = "/projects"; }, 2000);
+			setTimeout(function(){ window.location.href = base_url + "/projects"; }, 2000);
 		})
 		.catch(function (error) {
 			Toastr.error('Errore di connessione');

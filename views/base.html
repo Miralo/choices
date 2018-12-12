@@ -1,4 +1,3 @@
-<!-- views/layouts/main.handlebars -->
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -25,7 +24,12 @@
 		</div>
 		
 		<script src="https://sdk.amazonaws.com/js/aws-sdk-2.190.0.min.js"></script>
-		<script src="/dist/shared.entry.js"></script>
+
+		<script>
+			var base_url = '{{ baseurl }}';
+		</script>
+
+		<script src="{{ baseurl }}/dist/shared.entry.js"></script>
 		{% block bottom_scripts %}{% endblock %}
 	</body>
 </html>

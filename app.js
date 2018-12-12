@@ -1,4 +1,5 @@
 require('dotenv').config();
+const rewrite = require('express-urlrewrite');
 
 var express = require('express');
 var path = require('path');
@@ -7,6 +8,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var nunjucks = require('nunjucks');
+
+var baseUrl = process.env.BASE_URL || '';
 
 var app = express();
 
@@ -25,6 +28,8 @@ app.set('view engine', 'html');
 
 /** GENERIC MIDDLEWARE SETUP */
 /** ------------------------------- */
+
+app.use(rewrite('/choices/*', '/$1'));
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -49,6 +54,7 @@ knex.migrate.latest([config]);
 
 /** ROUTES SETUP */
 /** ------------------------------- */
+
 
 // index
 app.use('/', require('./routes/index'));

@@ -17,10 +17,10 @@ class Shared extends React.Component {
 			<div>
 				<Segment inverted style={{ borderRadius: '0px', marginBottom: '40px', padding: '5px 15px' }}>
 					<Menu inverted pointing secondary>
-						<Menu.Item name='dashboard' href="/dashboard">Dashboard</Menu.Item>
-						<Menu.Item name='projects' href="/projects">Projects</Menu.Item>
-						<Menu.Item name='agenda' href="/agenda">Agenda</Menu.Item>
-						<Menu.Item name='contacts' href="/contacts">Contacts</Menu.Item>
+						<Menu.Item name='dashboard' href={base_url + "/dashboard"}>Dashboard</Menu.Item>
+						<Menu.Item name='projects' href={base_url + "/projects"}>Projects</Menu.Item>
+						<Menu.Item name='agenda' href={base_url + "/agenda"}>Agenda</Menu.Item>
+						<Menu.Item name='contacts' href={base_url + "/contacts"}>Contacts</Menu.Item>
 
 						<Menu.Menu position='right'>
 							<Dropdown item text={user.signInUserSession.idToken.payload.email}>
@@ -43,7 +43,7 @@ let currentUser = userPool.getCurrentUser();
 if (currentUser != null) {
 	currentUser.getSession(function(err, session) {
 		if (err) {
-			window.location.href = "/login";
+			window.location.href = base_url + "/login";
 		}
 		if (session.isValid()) {
 			ReactDOM.render(

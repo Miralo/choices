@@ -4,11 +4,13 @@ var express = require('express')
 var config = require('../knexfile.js');
 var knex = require('knex')(config['development']);
 
+var baseUrl = process.env.BASE_URL || '';
+
 /* GET Projects Page. */
 router.get('/', function(req, res, next) {
 	knex.select().table('projects').then(function(items) {
 		var results = JSON.stringify(items);
-		res.render('projects', { title: 'Choices | I tuoi progetti', projects: results });
+		res.render('projects', { title: 'Choices | I tuoi progetti', projects: results, baseurl: baseUrl });
 	});
 });
 

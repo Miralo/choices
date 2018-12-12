@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "small and compact CRM package, thinked to handle and manage the choices made on projects",
   "scripts": {
-    "postinstall": "webpack",
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "build": "webpack",

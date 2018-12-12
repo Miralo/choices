@@ -50,11 +50,12 @@ class LoginForm extends React.Component {
 
 		cognitoUser.authenticateUser(authenticationDetails, {
 			onSuccess: function (result) {
-				window.location.href = "/dashboard";
+				window.location.href = base_url + "/dashboard";
 			},
 	
 			onFailure: function(err) {
-				alert(err);
+				Toastr.error(err);
+				console.log(err);
 			},
 	
 		});
